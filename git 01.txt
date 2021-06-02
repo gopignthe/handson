@@ -1,0 +1,107 @@
+kgopi@DESKTOP-PSEOARG MINGW64 ~
+$ git version
+git version 2.26.2.windows.1
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~
+$ mkdir GitDemo
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~
+$ cd GitDemo
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ git config --global user.name "gopignthe"
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ git config --global user.email "kgopinathgn@gmail.com"
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ git config --global --list
+user.name=gopignthe
+user.email=kgopinathgn@gmail.com
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ notepad++
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ notepad++.exe bash -profile
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ git config --global core.editor "notepad++.exe -multiInst -nosession"
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ git config --global -e
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ git init GitDemo
+Initialized empty Git repository in C:/Users/kgopi/GitDemo/GitDemo/.git/
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo
+$ git init
+Initialized empty Git repository in C:/Users/kgopi/GitDemo/.git/
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ ls -al
+total 16
+drwxr-xr-x 1 kgopi 197609 0 May 27 17:26 ./
+drwxr-xr-x 1 kgopi 197609 0 May 27 17:26 ../
+drwxr-xr-x 1 kgopi 197609 0 May 27 17:26 .git/
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ echo "Welcome to the version control">>welcome.txt
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ ls -al
+total 17
+drwxr-xr-x 1 kgopi 197609  0 May 27 17:27 ./
+drwxr-xr-x 1 kgopi 197609  0 May 27 17:26 ../
+drwxr-xr-x 1 kgopi 197609  0 May 27 17:26 .git/
+-rw-r--r-- 1 kgopi 197609 31 May 27 17:27 welcome.txt
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ cat windows.txt
+cat: windows.txt: No such file or directory
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ cat welcome.txt
+Welcome to the version control
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        welcome.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ git add welcome.txt
+warning: LF will be replaced by CRLF in welcome.txt.
+The file will have its original line endings in your working directory
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$  git commit -m "initial commit"
+[master (root-commit) b0d96ee] initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 welcome.txt
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ git remote add orgin https://gitlab.com/gopignthe/gitdemo.git
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ git commit -m"first commit"
+On branch master
+nothing to commit, working tree clean
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/GitDemo (master)
+$ git push orgin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 246 bytes | 123.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://gitlab.com/gopignthe/gitdemo.git
+ * [new branch]      master -> master
+

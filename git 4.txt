@@ -1,0 +1,257 @@
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git branch
+  GitNewBranch
+  gitwork
+* master
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ vi newfile.txt
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git add newfile.txt
+warning: LF will be replaced by CRLF in newfile.txt.
+The file will have its original line endings in your working directory
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git commit -m "newfile added"
+[master 532c05c] newfile added
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newfile.txt
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git branch
+  GitNewBranch
+  gitwork
+* master
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git checkout Gitwork
+Switched to branch 'Gitwork'
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (Gitwork)
+$ vi newxml.xml
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (Gitwork)
+$ cat newxml.xml
+xml file
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (Gitwork)
+$ git add newxml.xml
+warning: LF will be replaced by CRLF in newxml.xml.
+The file will have its original line endings in your working directory
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (Gitwork)
+$ vi newxml.txt
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (Gitwork)
+$ cat newxml.xml
+xml file
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (Gitwork)
+$ git add newxml.xml
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (Gitwork)
+$ git commit -m "newxml added from GitWork branch"
+[Gitwork 4cd02c0] newxml added from GitWork branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newxml.xml
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (Gitwork)
+$ git checkout master
+Switched to branch 'master'
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ vi newxml.xml
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ cat newxml.xml
+hello
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git add newxml.xml
+warning: LF will be replaced by CRLF in newxml.xml.
+The file will have its original line endings in your working directory
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git commit -m "newfile from master"
+[master 3decba3] newfile from master
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newxml.xml
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git log --graph --oneline --decorate --all
+* 3decba3 (HEAD -> master) newfile from master
+* 532c05c newfile added
+*   56a2286 xml file merged
+|\
+* | 98f4d85 mmodified xml from master
+* | 87b84cf example.xml from master
+* |   765a157 (orgin/master) Merge branch 'GitNewBranch'
+|\ \
+| * | a21b5a0 (orgin/GitNewBranch, GitNewBranch) trail added
+* | | 3ef47db example added from master
+|/ /
+| | * 4cd02c0 (Gitwork) newxml added from GitWork branch
+| |/
+| * b932641 hello xml added
+| * afb6205 example added
+|/
+* fc3af99 trail added
+* b0d96ee initial commit
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git diff master Gitwork
+diff --git a/.hello.xml.swp b/.hello.xml.swp
+deleted file mode 100644
+index 4cad029..0000000
+Binary files a/.hello.xml.swp and /dev/null differ
+diff --git a/example.xml b/example.xml
+index 435c79e..33a9488 100644
+--- a/example.xml
++++ b/example.xml
+@@ -1,5 +1 @@
+-<<<<<<< HEAD
+-second file test
+-=======
+ example
+->>>>>>> Gitwork
+diff --git a/newfile.txt b/newfile.txt
+deleted file mode 100644
+index aa39060..0000000
+--- a/newfile.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-newfile
+diff --git a/newxml.xml b/newxml.xml
+index ce01362..2dad7c5 100644
+--- a/newxml.xml
++++ b/newxml.xml
+@@ -1 +1 @@
+-hello
++xml file
+diff --git a/trail.txt b/trail.txt
+index 33a9488..e69de29 100644
+--- a/trail.txt
++++ b/trail.txt
+@@ -1 +0,0 @@
+-example
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git merge GitWork
+CONFLICT (add/add): Merge conflict in newxml.xml
+Auto-merging newxml.xml
+Automatic merge failed; fix conflicts and then commit the result.
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master|MERGING)
+$ git config merge.tool vimdiff
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master|MERGING)
+$ git mergetool
+Merging:
+newxml.xml
+
+Normal merge conflict for 'newxml.xml':
+  {local}: created file
+  {remote}: created file
+3 files to edit
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master|MERGING)
+$ git log --graph --oneline --decorate --all
+* 3decba3 (HEAD -> master) newfile from master
+* 532c05c newfile added
+*   56a2286 xml file merged
+|\
+* | 98f4d85 mmodified xml from master
+* | 87b84cf example.xml from master
+* |   765a157 (orgin/master) Merge branch 'GitNewBranch'
+|\ \
+| * | a21b5a0 (orgin/GitNewBranch, GitNewBranch) trail added
+* | | 3ef47db example added from master
+|/ /
+| | * 4cd02c0 (Gitwork) newxml added from GitWork branch
+| |/
+| * b932641 hello xml added
+| * afb6205 example added
+|/
+* fc3af99 trail added
+* b0d96ee initial commit
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master|MERGING)
+$ git add newxml.xml
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master|MERGING)
+$ git commit -m "newxml merged"
+[master e671e26] newxml merged
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello
+        newxml.txt
+        newxml.xml.orig
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ cat newxml.xml
+<<<<<<< HEAD
+hello
+=======
+xml file
+>>>>>>> GitWork
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git branch
+  GitNewBranch
+  Gitwork
+* master
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git branch -d Gitwork
+Deleted branch Gitwork (was 4cd02c0).
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git branch
+  GitNewBranch
+* master
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git branch -d GitNewBranch
+Deleted branch GitNewBranch (was a21b5a0).
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git branch
+* master
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git log --graph --oneline --decorate
+*   e671e26 (HEAD -> master) newxml merged
+|\
+| * 4cd02c0 newxml added from GitWork branch
+* | 3decba3 newfile from master
+* | 532c05c newfile added
+* | 56a2286 xml file merged
+|\|
+| * b932641 hello xml added
+| * afb6205 example added
+* | 98f4d85 mmodified xml from master
+* | 87b84cf example.xml from master
+* |   765a157 (orgin/master) Merge branch 'GitNewBranch'
+|\ \
+| * | a21b5a0 (orgin/GitNewBranch) trail added
+| |/
+* / 3ef47db example added from master
+|/
+* fc3af99 trail added
+* b0d96ee initial commit

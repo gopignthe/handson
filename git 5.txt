@@ -1,0 +1,46 @@
+kgopi@DESKTOP-PSEOARG MINGW64 ~ (master)
+$ cd gitdemo
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git ls-tree -r master
+100644 blob 4cad029c6c22c220de40108e9be22db2416cc371    .hello.xml.swp
+100644 blob 435c79e87605aa27c8ae802bfcb9982eda830572    example.xml
+100644 blob aa39060d7ee7daa8833a5ad2354c3f77d35cac71    newfile.txt
+100644 blob 07ce5dee3718cc8b4ce7674290afca5fc6c7d2cb    newxml.xml
+100644 blob 33a9488b167e4391ad6297a1e43e56f7ec8a294e    trail.txt
+100644 blob a6144e0633f36528be7ed928860e7d92a02d88f4    welcome.txt
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello
+        newxml.txt
+        newxml.xml.orig
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git ls-remote
+From http://github.com/gopignthe/GitDemo.git
+6cb8ddc69736506c8141833312561e45075d83c4        HEAD
+6cb8ddc69736506c8141833312561e45075d83c4        refs/heads/GitNewBranch
+6cb8ddc69736506c8141833312561e45075d83c4        refs/heads/master
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git remote add orgin master
+error: remote orgin already exists.
+
+kgopi@DESKTOP-PSEOARG MINGW64 ~/gitdemo (master)
+$ git push orgin master
+Enumerating objects: 28, done.
+Counting objects: 100% (28/28), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (25/25), 2.25 KiB | 76.00 KiB/s, done.
+Total 25 (delta 7), reused 0 (delta 0), pack-reused 0
+To https://gitlab.com/gopignthe/gitdemo.git
+   765a157..e671e26  master -> master
+
+
